@@ -401,9 +401,9 @@ async function start() {
       loadJSON("content/projects.json"),
       loadJSON("content/site.json"),
     ]);
-    SECTIONS = (projects.sections || []).filter((s) => s && s.id && s.title);
+    SECTIONS = (projects.sections || []).filter((s) => s && s.title).map((s) => ({ ...s, id: String(s.id || s.title).trim() }));
     PROJECTS = SECTIONS.flatMap((s) =>
-      (s.projects || []).filter((p) => p && p.id && p.title).map((p) => ({ ...p, category: s.id }))
+      (s.projects || []).filter((p) => p && p.title).map((p) => ({ ...p, id: String(p.id || p.title).trim(), category: s.id }))
     );
     SITE = site || {};
   } catch (err) {

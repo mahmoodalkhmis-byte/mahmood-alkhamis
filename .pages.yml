@@ -38,15 +38,11 @@ content:
             type: string
             required: true
           - name: id
-            label: رابط القسم (بالإنجليزي)
-            description: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، وما يتكرر. مثال: weddings — لا تغيّره بعد النشر عشان الروابط القديمة تبقى شغالة."
+            label: رابط القسم (اختياري)
+            description: إذا تركته فاضي، ينكتب اسم القسم في الرابط. لا تغيّره بعد النشر عشان الروابط القديمة تبقى شغالة.
             type: string
-            required: true
-            pattern:
-              regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
-              message: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، بدون مسافات"
           - name: label
-            label: العنوان الإنجليزي الصغير (اختياري)
+            label: العنوان الصغير فوق الاسم (اختياري)
             description: "يطلع فوق اسم القسم بخط صغير. مثال: SPORTS"
             type: string
           - name: intro
@@ -65,13 +61,9 @@ content:
                 type: string
                 required: true
               - name: id
-                label: اسم الرابط (بالإنجليزي)
-                description: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، وما يتكرر بين كل المشاريع. مثال: riyadh-2027 — لا تغيّره بعد النشر."
+                label: رابط المشروع (اختياري)
+                description: إذا تركته فاضي، ينكتب اسم المشروع في الرابط. لا تغيّره بعد النشر عشان الروابط القديمة تبقى شغالة.
                 type: string
-                required: true
-                pattern:
-                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
-                  message: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، بدون مسافات"
               - name: subtitle
                 label: سطر تعريفي (اختياري)
                 type: string
@@ -159,23 +151,14 @@ content:
             label: لون الخلفية (اختياري)
             description: "كود اللون، مثال: #0e0f10 — تلقى الأكواد إذا بحثت في Google عن color picker"
             type: string
-            pattern:
-              regex: "^(#[0-9a-fA-F]{6})?$"
-              message: "اكتب الكود بهالشكل: # وبعدها 6 حروف أو أرقام، مثل #0e0f10"
           - name: fg
             label: لون النص (اختياري)
             description: "مثال: #f1eee6"
             type: string
-            pattern:
-              regex: "^(#[0-9a-fA-F]{6})?$"
-              message: "اكتب الكود بهالشكل: # وبعدها 6 حروف أو أرقام، مثل #f1eee6"
           - name: muted
             label: لون النص الثانوي (اختياري)
             description: "للأسطر الصغيرة والمعلومات الجانبية. مثال: #9b988f"
             type: string
-            pattern:
-              regex: "^(#[0-9a-fA-F]{6})?$"
-              message: "اكتب الكود بهالشكل: # وبعدها 6 حروف أو أرقام، مثل #9b988f"
 
       - name: about
         label: نبذة عني
