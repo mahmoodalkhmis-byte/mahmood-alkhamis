@@ -135,6 +135,48 @@ content:
             options:
               path: site/images
 
+      - name: colors
+        label: الألوان
+        description: اختر نمط جاهز، أو اكتب ألوانك الخاصة تحت (الخانات الفاضية تاخذ لون النمط).
+        type: object
+        fields:
+          - name: theme
+            label: نمط الألوان
+            type: select
+            options:
+              values:
+                - name: dark
+                  label: داكن (الأصلي)
+                - name: light
+                  label: فاتح
+                - name: sand
+                  label: رملي
+                - name: navy
+                  label: كحلي
+                - name: olive
+                  label: زيتوني
+          - name: bg
+            label: لون الخلفية (اختياري)
+            description: "كود اللون، مثال: #0e0f10 — تلقى الأكواد إذا بحثت في Google عن color picker"
+            type: string
+            pattern:
+              regex: "^(#[0-9a-fA-F]{6})?$"
+              message: "اكتب الكود بهالشكل: # وبعدها 6 حروف أو أرقام، مثل #0e0f10"
+          - name: fg
+            label: لون النص (اختياري)
+            description: "مثال: #f1eee6"
+            type: string
+            pattern:
+              regex: "^(#[0-9a-fA-F]{6})?$"
+              message: "اكتب الكود بهالشكل: # وبعدها 6 حروف أو أرقام، مثل #f1eee6"
+          - name: muted
+            label: لون النص الثانوي (اختياري)
+            description: "للأسطر الصغيرة والمعلومات الجانبية. مثال: #9b988f"
+            type: string
+            pattern:
+              regex: "^(#[0-9a-fA-F]{6})?$"
+              message: "اكتب الكود بهالشكل: # وبعدها 6 حروف أو أرقام، مثل #9b988f"
+
       - name: about
         label: نبذة عني
         type: object

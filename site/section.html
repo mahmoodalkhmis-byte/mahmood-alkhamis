@@ -13,6 +13,8 @@
   <!-- يخفي العناصر اللي بتظهر مع النزول قبل ما تنرسم الصفحة (بدون JS كل شي يبان عادي) -->
   <script>
     document.documentElement.classList.add('js');
+    // ألوان الموقع المحفوظة من آخر زيارة (عشان ما تومض الألوان القديمة)
+    try { var c = JSON.parse(localStorage.getItem('site-colors') || '{}'); for (var k in c) document.documentElement.style.setProperty(k, c[k]); } catch (e) {}
     // انتقال الصفحات: إذا المتصفح تخطّاه (مثلًا ضغطت بسرعة) ما يطلع خطأ في الـ Console
     ['pageswap', 'pagereveal'].forEach(function (t) { addEventListener(t, function (e) { if (e.viewTransition) e.viewTransition.ready.catch(function () {}); }); });
   </script>

@@ -103,6 +103,27 @@ async function loadJSON(path) {
 }
 
 /* ------------------------------------------------------------------
+   الألوان: نمط جاهز من لوحة التحكم، وأي لون خاص مكتوب يغطي عليه.
+   تنحفظ في المتصفح عشان الصفحة الجاية تطلع بألوانها من أول لحظة.
+   ------------------------------------------------------------------ */
+const THEMES = {
+  dark:  { bg: "#0e0f10", fg: "#f1eee6", muted: "#9b988f" },
+  light: { bg: "#f6f3ec", fg: "#161514", muted: "#6f6b63" },
+  sand:  { bg: "#ece2d0", fg: "#2b241b", muted: "#7a6c58" },
+  navy:  { bg: "#0f1620", fg: "#eef1f4", muted: "#8d98a6" },
+  olive: { bg: "#1a1d16", fg: "#eeeadf", muted: "#9a9a86" },
+};
+const isHex = (c) => /^#[0-9a-f]{6}$/i.test(String(c || "").trim());
+
+function applyColors(c = {}) {
+  const base = THEMES[c.theme] || THEMES.dark;
+  const vars = {};
+  for (const k of ["bg", "fg", "muted"]) vars[`--${k}`] = isHex(c[k]) ? c[k].trim() : base[k];
+  for (const [k, v] of Object.entries(vars)) document.documentElement.style.setProperty(k, v);
+  try { localStorage.setItem("site-colors", JSON.stringify(vars)); } catch (e) {}
+}
+
+/* ------------------------------------------------------------------
    النصوص الثابتة في الصفحات: أي عنصر عليه واحد من هذي يتعبّى من site.json
      data-text="contact.title"   نص عادي
      data-lines="hero.title"     كل سطر جديد = <br>
@@ -390,6 +411,7 @@ async function start() {
     console.error("تعذّر تحميل ملفات المحتوى:", err);
   }
 
+  if (SITE.colors) applyColors(SITE.colors);
   fillSiteContent();
   renderNav();
   renderSectionLinks();

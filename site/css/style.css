@@ -5,12 +5,15 @@
    ================================================================== */
 
 :root {
+  /* الألوان الأساسية الثلاثة — تتغيّر من لوحة التحكم (نصوص الموقع ← الألوان) */
   --bg: #0e0f10;          /* لون الخلفية */
-  --bg-2: #17181a;        /* خلفية البطاقات */
   --fg: #f1eee6;          /* لون النص */
   --muted: #9b988f;       /* نص ثانوي */
-  --faint: #5f5d58;       /* نص باهت */
-  --line: rgba(241, 238, 230, 0.12);
+  /* الباقي ينحسب منها تلقائيًا */
+  --bg-2: color-mix(in srgb, var(--bg) 94%, var(--fg));     /* خلفية البطاقات */
+  --faint: color-mix(in srgb, var(--muted) 55%, var(--bg)); /* نص باهت */
+  --soft: color-mix(in srgb, var(--fg) 85%, var(--bg));     /* نص الفقرات */
+  --line: color-mix(in srgb, var(--fg) 12%, transparent);
   --font: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
   --max: 1280px;          /* أقصى عرض للمحتوى */
   --gutter: clamp(16px, 4vw, 48px);
@@ -92,7 +95,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(14, 15, 16, 0.86);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
@@ -280,7 +283,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .project-head h1 { font-size: clamp(34px, 4.4vw, 60px); font-weight: 700; line-height: 1.35; margin-top: 14px; }
 .project-sub { margin-top: 14px; font-size: 17px; line-height: 1.8; }
 .project-meta { margin-top: 10px; color: var(--muted); font-size: 15px; }
-.project-desc { color: #d6d3cb; font-size: 18px; line-height: 2.1; padding-top: 6px; }
+.project-desc { color: var(--soft); font-size: 18px; line-height: 2.1; padding-top: 6px; }
 .project-desc p + p { margin-top: 22px; }
 .project-desc p:first-child:not(:only-child) { color: var(--muted); font-size: 15.5px; }
 
@@ -364,7 +367,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .about h1 { font-size: clamp(36px, 4.8vw, 64px); font-weight: 700; line-height: 1.35; margin-block: 16px 32px; }
 .about-lead { font-size: clamp(19px, 1.8vw, 23px); line-height: 2; }
-.about-text p { color: #d6d3cb; }
+.about-text p { color: var(--soft); }
 .about-text p + p,
 .about-lead + .about-body { margin-top: 24px; }
 .about-photo img { width: 100%; border-radius: 3px; }
@@ -375,7 +378,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .fact span { color: var(--muted); font-size: 14.5px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
-.tags li { list-style: none; padding: 6px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 14.5px; color: #d6d3cb; }
+.tags li { list-style: none; padding: 6px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 14.5px; color: var(--soft); }
 
 .about-actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-top: 48px; }
 
