@@ -5,15 +5,14 @@
    الملفين تعدّلهم من لوحة التحكم (Pages CMS)، ما تحتاج تلمس هذا الملف.
    ================================================================== */
 
-/* القسمين ثابتين: لكل قسم اسم وصفحة.
-   العنوان الإنجليزي الصغير والنبذة تنكتب في لوحة التحكم (site.json) */
-const SECTIONS = {
-  sport: { title: "رياضي", page: "sports.html", label: "SPORTS", intro: "" },
-  story: { title: "مشاريع", page: "projects.html", label: "PEOPLE · PLACES · STORIES", intro: "" },
-};
-
-let PROJECTS = [];
+/* الأقسام (رياضي، مشاريع، ...) تنضاف وتنعدّل من لوحة التحكم:
+   كل قسم فيه اسمه ونبذته ومشاريعه، والقائمة فوق تنبني منها تلقائيًا */
+let SECTIONS = [];
+let PROJECTS = []; // كل المشاريع من كل الأقسام، وكل مشروع يعرف قسمه في category
 let SITE = {};
+
+/* رابط صفحة القسم */
+const sectionPage = (key) => `section.html?id=${encodeURIComponent(key)}`;
 
 const $ = (id) => document.getElementById(id);
 const pad = (n) => String(n).padStart(2, "0");
@@ -38,8 +37,59 @@ const paragraphs = (t) =>
 /* يجيب قيمة من site.json بمسار مثل "about.lead" */
 const pick = (path) => path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), SITE);
 
-/* معلومات القسم: الاسم والصفحة من فوق، والباقي من site.json */
-const sectionInfo = (key) => ({ ...SECTIONS[key], ...(SITE.sections?.[key] || {}) });
+/* معلومات القسم: الاسم والعنوان الإنجليزي والنبذة ورابط الصفحة */
+const sectionInfo = (key) => {
+  const s = SECTIONS.find((x) => x.id === key) || { id: key, title: "", label: "", intro: "" };
+  return { ...s, page: sectionPage(s.id) };
+};
+
+/* القسم المفتوح الحين: من صفحة القسم أو من المشروع المفتوح */
+function currentSection() {
+  const page = $("section-page");
+  if (page) return page.dataset.category || new URLSearchParams(location.search).get("id");
+  if ($("project-page")) {
+    const id = new URLSearchParams(location.search).get("id");
+    return PROJECTS.find((p) => p.id === id)?.category;
+  }
+  return null;
+}
+
+/* القائمة فوق: روابط الأقسام قبل "نبذة عني" (تنبني من لوحة التحكم) */
+function renderNav() {
+  if (!SECTIONS.length) return;
+  const cur = currentSection();
+  document.querySelectorAll(".nav").forEach((nav) => {
+    nav.querySelectorAll("[data-nav-section]").forEach((a) => a.remove());
+    const html = SECTIONS.map(
+      (s) =>
+        `<a href="${esc(sectionPage(s.id))}" data-nav-section data-nav="${esc(s.id)}"${
+          s.id === cur ? ' aria-current="page"' : ""
+        }>${esc(s.title)}</a>`
+    ).join("");
+    nav.insertAdjacentHTML("afterbegin", html);
+  });
+}
+
+/* أزرار الأقسام في الصفحة الرئيسية */
+function renderSectionLinks() {
+  if (!SECTIONS.length) return;
+  document.querySelectorAll("[data-section-buttons]").forEach((el) => {
+    el.querySelectorAll("[data-section-btn]").forEach((a) => a.remove());
+    el.insertAdjacentHTML(
+      "afterbegin",
+      SECTIONS.map(
+        (s) =>
+          `<a class="btn" href="${esc(sectionPage(s.id))}" data-section-btn>${esc(s.title)} <span class="arrow" aria-hidden="true">←</span></a>`
+      ).join("")
+    );
+  });
+  document.querySelectorAll("[data-section-links]").forEach((el) => {
+    el.innerHTML = SECTIONS.map(
+      (s) =>
+        `<a class="text-link" href="${esc(sectionPage(s.id))}">${esc(s.title)} <span class="arrow" aria-hidden="true">←</span></a>`
+    ).join("");
+  });
+}
 
 /* مشاريع نفس القسم، ورقم المشروع داخل قسمه (01، 02، ...) */
 const sameSection = (p) => PROJECTS.filter((q) => q.category === p.category);
@@ -148,12 +198,21 @@ function cardHTML(p, k = 0) {
     </a>`;
 }
 
-/* صفحة القسم (رياضي أو مشاريع): العنوان والنبذة، وبعدها الأغلفة
-   القسم يتحدد من data-category في الصفحة نفسها (sports.html / projects.html) */
+/* صفحة القسم: العنوان والنبذة، وبعدها الأغلفة
+   القسم يتحدد من الرابط section.html?id=... (أو data-category في الصفحات القديمة) */
 function renderSectionPage(el) {
-  const key = el.dataset.category;
+  const key = currentSection();
+  if (!SECTIONS.some((s) => s.id === key)) {
+    el.innerHTML = `
+      <div class="wrap empty">
+        <h1>القسم غير موجود</h1>
+        <p><a class="btn" href="index.html">ارجع للرئيسية</a></p>
+      </div>`;
+    return;
+  }
   const cat = sectionInfo(key);
   const list = PROJECTS.filter((p) => p.category === key);
+  document.title = `${cat.title} | محمود آل خميس`;
   el.innerHTML = `
     <div class="page-head wrap">
       <span class="eyebrow">${esc(cat.label)}</span>
@@ -188,10 +247,6 @@ function renderProject(el) {
   const next = section[(section.indexOf(p) + 1) % section.length]; // التالي من نفس القسم
   const photos = (p.photos || []).map(src);
   document.title = `${p.title} | محمود آل خميس`;
-
-  // نعلّم القسم الحالي في الهيدر (رياضي أو مشاريع)
-  const navLink = document.querySelector(`.nav a[data-nav="${p.category}"]`);
-  if (navLink) navLink.setAttribute("aria-current", "page");
 
   el.innerHTML = `
     <article class="project">
@@ -325,7 +380,10 @@ async function start() {
       loadJSON("content/projects.json"),
       loadJSON("content/site.json"),
     ]);
-    PROJECTS = (projects.projects || []).filter((p) => p && p.id && p.title);
+    SECTIONS = (projects.sections || []).filter((s) => s && s.id && s.title);
+    PROJECTS = SECTIONS.flatMap((s) =>
+      (s.projects || []).filter((p) => p && p.id && p.title).map((p) => ({ ...p, category: s.id }))
+    );
     SITE = site || {};
   } catch (err) {
     // مثلًا لو فتحت الملف مباشرة بدون سيرفر: النصوص المكتوبة في الصفحة تبقى زي ما هي
@@ -333,6 +391,8 @@ async function start() {
   }
 
   fillSiteContent();
+  renderNav();
+  renderSectionLinks();
   if ($("contact-list")) renderContactList($("contact-list"));
   if ($("section-page")) renderSectionPage($("section-page"));
   if ($("featured-list")) renderFeatured($("featured-list"));

@@ -1,5 +1,6 @@
 # ==================================================================
 # لوحة التحكم (Pages CMS) — تدخلها من app.pagescms.org
+# أو من رابط الموقع: mahmood-alkhamis.netlify.app/admin
 # هذا الملف يحدد وش يطلع في اللوحة من خانات. ما تحتاج تعدّله.
 # ==================================================================
 
@@ -17,14 +18,14 @@ settings:
 content:
   # ---------------------------------------------------------------
   - name: projects
-    label: المشاريع
-    description: مشاريع القسمين (رياضي ومشاريع). اسحب المشروع لفوق أو لتحت عشان تغيّر ترتيبه في الموقع.
+    label: الأقسام والمشاريع
+    description: كل قسم يطلع في القائمة فوق، وداخله مشاريعه. اسحب أي قسم أو مشروع لفوق أو لتحت عشان تغيّر ترتيبه.
     type: file
     path: site/content/projects.json
     format: json
     fields:
-      - name: projects
-        label: المشاريع
+      - name: sections
+        label: الأقسام
         type: object
         list:
           collapsible:
@@ -32,66 +33,84 @@ content:
             summary: "{fields.title}"
         fields:
           - name: title
-            label: اسم المشروع
+            label: اسم القسم
+            description: يطلع في القائمة فوق وعنوان صفحة القسم. تقدر تغيّره وقت ما تبي.
             type: string
             required: true
           - name: id
-            label: اسم الرابط (بالإنجليزي)
-            description: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، وما يتكرر بين المشاريع. مثال: riyadh-2027 — لا تغيّره بعد النشر عشان الروابط القديمة تبقى شغالة."
+            label: رابط القسم (بالإنجليزي)
+            description: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، وما يتكرر. مثال: weddings — لا تغيّره بعد النشر عشان الروابط القديمة تبقى شغالة."
             type: string
             required: true
             pattern:
               regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
               message: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، بدون مسافات"
-          - name: category
-            label: القسم
-            type: select
-            required: true
-            options:
-              values:
-                - name: sport
-                  label: رياضي
-                - name: story
-                  label: مشاريع
-          - name: subtitle
-            label: سطر تعريفي (اختياري)
+          - name: label
+            label: العنوان الإنجليزي الصغير (اختياري)
+            description: "يطلع فوق اسم القسم بخط صغير. مثال: SPORTS"
             type: string
-          - name: location
-            label: المكان
-            type: string
-          - name: year
-            label: السنة (اختياري)
-            type: string
-          - name: featured
-            label: يظهر في الصفحة الرئيسية
-            type: boolean
-          - name: cover
-            label: صورة الغلاف
-            description: تنقص مربع في صفحة القسم، وتطلع كاملة فوق في صفحة المشروع.
-            type: image
-            required: true
-            options:
-              path: site/images/projects
-          - name: coverPosition
-            label: موضع الغلاف داخل المربع (اختياري)
-            description: "استخدمه إذا المربع قاطع الوجه. 50% 50% = الوسط، 80% 50% = يميل لليمين، 20% 50% = لليسار، 50% 20% = لفوق."
-            type: string
-          - name: description
-            label: الوصف
-            description: كل سطر جديد = فقرة جديدة.
+          - name: intro
+            label: النبذة تحت العنوان (اختياري)
             type: text
-          - name: photos
-            label: صور المشروع
-            description: تقدر ترفع أكثر من صورة مرة وحدة. تطلع في الموقع بنفس الترتيب اللي هنا.
-            type: image
-            options:
-              multiple: true
-              path: site/images/projects
+          - name: projects
+            label: مشاريع القسم
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.title}"
+            fields:
+              - name: title
+                label: اسم المشروع
+                type: string
+                required: true
+              - name: id
+                label: اسم الرابط (بالإنجليزي)
+                description: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، وما يتكرر بين كل المشاريع. مثال: riyadh-2027 — لا تغيّره بعد النشر."
+                type: string
+                required: true
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: "حروف إنجليزية صغيرة وأرقام وشرطة (-) بس، بدون مسافات"
+              - name: subtitle
+                label: سطر تعريفي (اختياري)
+                type: string
+              - name: location
+                label: المكان
+                type: string
+              - name: year
+                label: السنة (اختياري)
+                type: string
+              - name: featured
+                label: يظهر في الصفحة الرئيسية
+                type: boolean
+              - name: cover
+                label: صورة الغلاف
+                description: تنقص مربع في صفحة القسم، وتطلع كاملة فوق في صفحة المشروع. أي قياس ينفع.
+                type: image
+                required: true
+                options:
+                  path: site/images/projects
+              - name: coverPosition
+                label: موضع الغلاف داخل المربع (اختياري)
+                description: "استخدمه إذا المربع قاطع الوجه. 50% 50% = الوسط، 80% 50% = يميل لليمين، 20% 50% = لليسار، 50% 20% = لفوق."
+                type: string
+              - name: description
+                label: الوصف
+                description: كل سطر جديد = فقرة جديدة.
+                type: text
+              - name: photos
+                label: صور المشروع
+                description: تقدر ترفع أكثر من صورة مرة وحدة. أي قياس ينفع، والموقع يصغّر الكبيرة لحاله.
+                type: image
+                options:
+                  multiple: true
+                  path: site/images/projects
 
   # ---------------------------------------------------------------
   - name: site
     label: نصوص الموقع
-    description: الصفحة الرئيسية، نبذة الأقسام، نبذة عني، وبيانات التواصل.
+    description: الصفحة الرئيسية، نبذة عني، وبيانات التواصل.
     type: file
     path: site/content/site.json
     format: json
@@ -115,31 +134,6 @@ content:
             type: image
             options:
               path: site/images
-
-      - name: sections
-        label: نبذة الأقسام
-        type: object
-        fields:
-          - name: sport
-            label: قسم رياضي
-            type: object
-            fields:
-              - name: label
-                label: العنوان الإنجليزي الصغير
-                type: string
-              - name: intro
-                label: النبذة تحت العنوان
-                type: text
-          - name: story
-            label: قسم مشاريع
-            type: object
-            fields:
-              - name: label
-                label: العنوان الإنجليزي الصغير
-                type: string
-              - name: intro
-                label: النبذة تحت العنوان
-                type: text
 
       - name: about
         label: نبذة عني

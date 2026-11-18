@@ -49,7 +49,8 @@ img { display: block; max-width: 100%; height: auto; }
 
 /* النصوص والصور اللي تجي من لوحة التحكم (content/site.json) تختفي لحظة لين يتحمّل الملف،
    عشان ما يبان النص القديم المكتوب في الصفحة ثم يتبدّل قدام الزائر */
-.js:not(.content-ready) :is([data-text], [data-lines], [data-paras], [data-src], [data-list], #contact-list) {
+.js:not(.content-ready) :is([data-text], [data-lines], [data-paras], [data-src], [data-list], #contact-list,
+                             [data-nav-section], [data-section-btn], [data-section-links]) {
   visibility: hidden;
 }
 a { color: inherit; text-decoration: none; }

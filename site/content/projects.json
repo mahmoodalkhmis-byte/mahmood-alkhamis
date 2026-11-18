@@ -1,159 +1,167 @@
 {
-  "projects": [
+  "sections": [
     {
-      "title": "البحرين 2024",
-      "id": "bahrain-2024",
-      "category": "sport",
-      "subtitle": "بطولة العالم لرفع الأثقال",
-      "location": "البحرين",
-      "year": "2024",
-      "featured": false,
-      "cover": "images/projects/bahrain-2024/cover.jpg",
-      "coverPosition": "50% 50%",
-      "description": "تغطية بطولة العالم لرفع الأثقال في البحرين.",
-      "photos": [
-        "images/projects/bahrain-2024/01.jpg",
-        "images/projects/bahrain-2024/02.jpg",
-        "images/projects/bahrain-2024/03.jpg"
+      "title": "رياضي",
+      "id": "sport",
+      "label": "SPORTS",
+      "intro": "لحظة الحسم، وما تتركه في الوجوه.",
+      "projects": [
+        {
+          "title": "البحرين 2024",
+          "id": "bahrain-2024",
+          "subtitle": "بطولة العالم لرفع الأثقال",
+          "location": "البحرين",
+          "year": "2024",
+          "featured": false,
+          "cover": "images/projects/bahrain-2024/cover.jpg",
+          "coverPosition": "50% 50%",
+          "description": "تغطية بطولة العالم لرفع الأثقال في البحرين.",
+          "photos": [
+            "images/projects/bahrain-2024/01.jpg",
+            "images/projects/bahrain-2024/02.jpg",
+            "images/projects/bahrain-2024/03.jpg"
+          ]
+        },
+        {
+          "title": "قطر 2025",
+          "id": "qatar-2025",
+          "subtitle": "كأس قطر وبطولتا غرب آسيا والعرب لرفع الأثقال",
+          "location": "الدوحة، قطر",
+          "year": "2025",
+          "featured": false,
+          "cover": "images/projects/qatar-2025/cover.jpg",
+          "coverPosition": "55% 50%",
+          "description": "تغطية كأس قطر وبطولتي غرب آسيا والعرب لرفع الأثقال في الدوحة، ديسمبر 2025.",
+          "photos": [
+            "images/projects/qatar-2025/01.jpg",
+            "images/projects/qatar-2025/02.jpg",
+            "images/projects/qatar-2025/03.jpg"
+          ]
+        },
+        {
+          "title": "الجزائر 2026",
+          "id": "algeria-2026",
+          "subtitle": "البطولة العربية والإفريقية لرفع الأثقال",
+          "location": "مستغانم، الجزائر",
+          "year": "2026",
+          "featured": true,
+          "cover": "images/projects/algeria-2026/cover.jpg",
+          "coverPosition": "45% 50%",
+          "description": "مستغانم، الجزائر · ٧–١٣ أكتوبر ٢٠٢٦.\n\nعلى المنصة، تُحسم المحاولة بإشارة. وفي الجسد والوجه، تبقى حكاية الجهد؛ بين صمت الخيبة وانفجار الفرح.\n\nحتى في لحظة النجاح، يبقى الجهد ظاهرًا في الجسد.",
+          "photos": [
+            "images/projects/algeria-2026/01.jpg",
+            "images/projects/algeria-2026/02.jpg",
+            "images/projects/algeria-2026/03.jpg",
+            "images/projects/algeria-2026/04.jpg",
+            "images/projects/algeria-2026/05.jpg",
+            "images/projects/algeria-2026/06.jpg",
+            "images/projects/algeria-2026/07.jpg",
+            "images/projects/algeria-2026/08.jpg",
+            "images/projects/algeria-2026/09.jpg"
+          ]
+        },
+        {
+          "title": "البطولات المحلية",
+          "id": "saudi-2026",
+          "subtitle": "بطولة المملكة للأندية للرجال لفئتي الناشئين والشباب",
+          "location": "السعودية",
+          "year": "2025–2026",
+          "featured": false,
+          "cover": "images/projects/saudi-2026/cover.jpg",
+          "coverPosition": "50% 50%",
+          "description": "من تغطيات البطولات المحلية لرفع الأثقال في المملكة، ومنها بطولة المملكة للأندية للرجال لفئتي الناشئين والشباب في الرياض.",
+          "photos": [
+            "images/projects/saudi-2026/01.jpg",
+            "images/projects/saudi-2026/02.jpg",
+            "images/projects/saudi-2026/03.jpg",
+            "images/projects/saudi-2026/04.jpg",
+            "images/projects/saudi-2026/05.jpg"
+          ]
+        }
       ]
     },
     {
-      "title": "قطر 2025",
-      "id": "qatar-2025",
-      "category": "sport",
-      "subtitle": "كأس قطر وبطولتا غرب آسيا والعرب لرفع الأثقال",
-      "location": "الدوحة، قطر",
-      "year": "2025",
-      "featured": false,
-      "cover": "images/projects/qatar-2025/cover.jpg",
-      "coverPosition": "55% 50%",
-      "description": "تغطية كأس قطر وبطولتي غرب آسيا والعرب لرفع الأثقال في الدوحة، ديسمبر 2025.",
-      "photos": [
-        "images/projects/qatar-2025/01.jpg",
-        "images/projects/qatar-2025/02.jpg",
-        "images/projects/qatar-2025/03.jpg"
-      ]
-    },
-    {
-      "title": "الجزائر 2026",
-      "id": "algeria-2026",
-      "category": "sport",
-      "subtitle": "البطولة العربية والإفريقية لرفع الأثقال",
-      "location": "مستغانم، الجزائر",
-      "year": "2026",
-      "featured": true,
-      "cover": "images/projects/algeria-2026/cover.jpg",
-      "coverPosition": "45% 50%",
-      "description": "مستغانم، الجزائر · ٧–١٣ أكتوبر ٢٠٢٦.\n\nعلى المنصة، تُحسم المحاولة بإشارة. وفي الجسد والوجه، تبقى حكاية الجهد؛ بين صمت الخيبة وانفجار الفرح.\n\nحتى في لحظة النجاح، يبقى الجهد ظاهرًا في الجسد.",
-      "photos": [
-        "images/projects/algeria-2026/01.jpg",
-        "images/projects/algeria-2026/02.jpg",
-        "images/projects/algeria-2026/03.jpg",
-        "images/projects/algeria-2026/04.jpg",
-        "images/projects/algeria-2026/05.jpg",
-        "images/projects/algeria-2026/06.jpg",
-        "images/projects/algeria-2026/07.jpg",
-        "images/projects/algeria-2026/08.jpg",
-        "images/projects/algeria-2026/09.jpg"
-      ]
-    },
-    {
-      "title": "البطولات المحلية",
-      "id": "saudi-2026",
-      "category": "sport",
-      "subtitle": "بطولة المملكة للأندية للرجال لفئتي الناشئين والشباب",
-      "location": "السعودية",
-      "year": "2025–2026",
-      "featured": false,
-      "cover": "images/projects/saudi-2026/cover.jpg",
-      "coverPosition": "50% 50%",
-      "description": "من تغطيات البطولات المحلية لرفع الأثقال في المملكة، ومنها بطولة المملكة للأندية للرجال لفئتي الناشئين والشباب في الرياض.",
-      "photos": [
-        "images/projects/saudi-2026/01.jpg",
-        "images/projects/saudi-2026/02.jpg",
-        "images/projects/saudi-2026/03.jpg",
-        "images/projects/saudi-2026/04.jpg",
-        "images/projects/saudi-2026/05.jpg"
-      ]
-    },
-    {
-      "title": "شمسو — الخباز",
-      "id": "shamsu",
-      "category": "story",
-      "subtitle": "",
-      "location": "العوامية",
-      "year": "",
-      "featured": true,
-      "cover": "images/projects/shamsu/cover.jpg",
-      "coverPosition": "92% 50%",
-      "description": "أربعون عامًا بين الدقيق والنار، يصنع الخبز كل يوم كما لو أن المهنة ما زالت في بدايتها. جاء إلى العوامية شابًا، ومع السنوات صار المكان جزءًا من حكايته، حتى لم يعد يشعر فيه بالغربة.",
-      "photos": [
-        "images/projects/shamsu/01.jpg",
-        "images/projects/shamsu/02.jpg",
-        "images/projects/shamsu/03.jpg",
-        "images/projects/shamsu/04.jpg",
-        "images/projects/shamsu/05.jpg",
-        "images/projects/shamsu/06.jpg"
-      ]
-    },
-    {
-      "title": "محيي — الخياط",
-      "id": "muhyi",
-      "category": "story",
-      "subtitle": "",
-      "location": "العوامية",
-      "year": "",
-      "featured": false,
-      "cover": "images/projects/muhyi/cover.jpg",
-      "coverPosition": "50% 50%",
-      "description": "سبعة وثلاثون عامًا خلف ماكينة الخياطة، مرّت أمامه أجيال ومناسبات وتفاصيل يومية لا تُحصى. بقيت الابتسامة رفيقة وجهه، وبقيت العوامية بالنسبة إليه أكثر من مكان للعمل؛ وطنًا عاش فيه عمر المهنة.",
-      "photos": [
-        "images/projects/muhyi/01.jpg",
-        "images/projects/muhyi/02.jpg",
-        "images/projects/muhyi/03.jpg",
-        "images/projects/muhyi/04.jpg",
-        "images/projects/muhyi/05.jpg",
-        "images/projects/muhyi/06.jpg"
-      ]
-    },
-    {
-      "title": "أبو حسين — الميكانيكي",
-      "id": "abu-hussain",
-      "category": "story",
-      "subtitle": "",
-      "location": "العوامية",
-      "year": "",
-      "featured": false,
-      "cover": "images/projects/abu-hussain/cover.jpg",
-      "coverPosition": "40% 50%",
-      "description": "أربعة عقود قضاها بين العجلات والمحركات وقطع الغيار؛ بدأ بالدراجات الهوائية ثم النارية، حتى أصبح خبيرًا في تفاصيل السيارات وأعطالها. مهنة كبرت معه، وتحولت مع السنوات إلى حياة كاملة.",
-      "photos": [
-        "images/projects/abu-hussain/01.jpg",
-        "images/projects/abu-hussain/02.jpg",
-        "images/projects/abu-hussain/03.jpg",
-        "images/projects/abu-hussain/04.jpg",
-        "images/projects/abu-hussain/05.jpg",
-        "images/projects/abu-hussain/06.jpg"
-      ]
-    },
-    {
-      "title": "أبو مصطفى — الحداد",
-      "id": "abu-mustafa",
-      "category": "story",
-      "subtitle": "",
-      "location": "العوامية",
-      "year": "",
-      "featured": true,
-      "cover": "images/projects/abu-mustafa/cover.jpg",
-      "coverPosition": "50% 50%",
-      "description": "أكثر من خمسين عامًا بين الألواح المعدنية والأنابيب، يشكّل الأسقف والمظلات بيد خبرت الحديد. بين القياس والقص واللحام ترك أثر سنوات من الكفاح والجد، وبقيت همة العمل حاضرة رغم شيب الرأس.",
-      "photos": [
-        "images/projects/abu-mustafa/01.jpg",
-        "images/projects/abu-mustafa/02.jpg",
-        "images/projects/abu-mustafa/03.jpg",
-        "images/projects/abu-mustafa/04.jpg",
-        "images/projects/abu-mustafa/05.jpg",
-        "images/projects/abu-mustafa/06.jpg"
+      "title": "مشاريع",
+      "id": "story",
+      "label": "PEOPLE · PLACES · STORIES",
+      "intro": "الإنسان، المهنة، والمكان. قصص من الحياة اليومية، تتشكّل في الوجوه والأيدي، وفي علاقة الإنسان بالمكان الذي يمضي فيه عمره.",
+      "projects": [
+        {
+          "title": "شمسو — الخباز",
+          "id": "shamsu",
+          "subtitle": "",
+          "location": "العوامية",
+          "year": "",
+          "featured": true,
+          "cover": "images/projects/shamsu/cover.jpg",
+          "coverPosition": "92% 50%",
+          "description": "أربعون عامًا بين الدقيق والنار، يصنع الخبز كل يوم كما لو أن المهنة ما زالت في بدايتها. جاء إلى العوامية شابًا، ومع السنوات صار المكان جزءًا من حكايته، حتى لم يعد يشعر فيه بالغربة.",
+          "photos": [
+            "images/projects/shamsu/01.jpg",
+            "images/projects/shamsu/02.jpg",
+            "images/projects/shamsu/03.jpg",
+            "images/projects/shamsu/04.jpg",
+            "images/projects/shamsu/05.jpg",
+            "images/projects/shamsu/06.jpg"
+          ]
+        },
+        {
+          "title": "محيي — الخياط",
+          "id": "muhyi",
+          "subtitle": "",
+          "location": "العوامية",
+          "year": "",
+          "featured": false,
+          "cover": "images/projects/muhyi/cover.jpg",
+          "coverPosition": "50% 50%",
+          "description": "سبعة وثلاثون عامًا خلف ماكينة الخياطة، مرّت أمامه أجيال ومناسبات وتفاصيل يومية لا تُحصى. بقيت الابتسامة رفيقة وجهه، وبقيت العوامية بالنسبة إليه أكثر من مكان للعمل؛ وطنًا عاش فيه عمر المهنة.",
+          "photos": [
+            "images/projects/muhyi/01.jpg",
+            "images/projects/muhyi/02.jpg",
+            "images/projects/muhyi/03.jpg",
+            "images/projects/muhyi/04.jpg",
+            "images/projects/muhyi/05.jpg",
+            "images/projects/muhyi/06.jpg"
+          ]
+        },
+        {
+          "title": "أبو حسين — الميكانيكي",
+          "id": "abu-hussain",
+          "subtitle": "",
+          "location": "العوامية",
+          "year": "",
+          "featured": false,
+          "cover": "images/projects/abu-hussain/cover.jpg",
+          "coverPosition": "40% 50%",
+          "description": "أربعة عقود قضاها بين العجلات والمحركات وقطع الغيار؛ بدأ بالدراجات الهوائية ثم النارية، حتى أصبح خبيرًا في تفاصيل السيارات وأعطالها. مهنة كبرت معه، وتحولت مع السنوات إلى حياة كاملة.",
+          "photos": [
+            "images/projects/abu-hussain/01.jpg",
+            "images/projects/abu-hussain/02.jpg",
+            "images/projects/abu-hussain/03.jpg",
+            "images/projects/abu-hussain/04.jpg",
+            "images/projects/abu-hussain/05.jpg",
+            "images/projects/abu-hussain/06.jpg"
+          ]
+        },
+        {
+          "title": "أبو مصطفى — الحداد",
+          "id": "abu-mustafa",
+          "subtitle": "",
+          "location": "العوامية",
+          "year": "",
+          "featured": true,
+          "cover": "images/projects/abu-mustafa/cover.jpg",
+          "coverPosition": "50% 50%",
+          "description": "أكثر من خمسين عامًا بين الألواح المعدنية والأنابيب، يشكّل الأسقف والمظلات بيد خبرت الحديد. بين القياس والقص واللحام ترك أثر سنوات من الكفاح والجد، وبقيت همة العمل حاضرة رغم شيب الرأس.",
+          "photos": [
+            "images/projects/abu-mustafa/01.jpg",
+            "images/projects/abu-mustafa/02.jpg",
+            "images/projects/abu-mustafa/03.jpg",
+            "images/projects/abu-mustafa/04.jpg",
+            "images/projects/abu-mustafa/05.jpg",
+            "images/projects/abu-mustafa/06.jpg"
+          ]
+        }
       ]
     }
   ]
