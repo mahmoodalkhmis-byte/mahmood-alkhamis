@@ -115,12 +115,40 @@ const THEMES = {
 };
 const isHex = (c) => /^#[0-9a-f]{6}$/i.test(String(c || "").trim());
 
-function applyColors(c = {}) {
-  const base = THEMES[c.theme] || THEMES.dark;
-  const vars = {};
-  for (const k of ["bg", "fg", "muted"]) vars[`--${k}`] = isHex(c[k]) ? c[k].trim() : base[k];
-  for (const [k, v] of Object.entries(vars)) document.documentElement.style.setProperty(k, v);
-  try { localStorage.setItem("site-colors", JSON.stringify(vars)); } catch (e) {}
+/* الألوان طبقات: ألوان الموقع ← ألوان الصفحة أو القسم ← ألوان المشروع.
+   كل طبقة: نمط جاهز (يغطي الثلاث ألوان) وبعده أي كود لون مكتوب.
+   "inherit" أو فاضي = خذ اللي قبلها. */
+const pageKey = () => "site-colors:" + location.pathname + location.search;
+
+function applyColors(...layers) {
+  const vars = { ...THEMES.dark };
+  for (const c of layers) {
+    if (!c) continue;
+    if (THEMES[c.theme]) Object.assign(vars, THEMES[c.theme]);
+    for (const k of ["bg", "fg", "muted"]) if (isHex(c[k])) vars[k] = c[k].trim();
+  }
+  const css = {};
+  for (const k of ["bg", "fg", "muted"]) {
+    css[`--${k}`] = vars[k];
+    document.documentElement.style.setProperty(`--${k}`, vars[k]);
+  }
+  try { localStorage.setItem(pageKey(), JSON.stringify(css)); } catch (e) {}
+}
+
+/* ألوان الصفحة المفتوحة الحين */
+function pageColors() {
+  const site = SITE.colors;
+  const pc = SITE.pageColors || {};
+  if ($("section-page")) return [site, sectionInfo(currentSection()).colors];
+  if ($("project-page")) {
+    const id = new URLSearchParams(location.search).get("id");
+    const p = PROJECTS.find((q) => q.id === id);
+    return [site, p && sectionInfo(p.category).colors, p && p.colors];
+  }
+  if ($("contact-list")) return [site, pc.contact];
+  if ($("featured-list")) return [site, pc.home];
+  if (/about/.test(location.pathname)) return [site, pc.about];
+  return [site];
 }
 
 /* ------------------------------------------------------------------
@@ -411,7 +439,7 @@ async function start() {
     console.error("تعذّر تحميل ملفات المحتوى:", err);
   }
 
-  if (SITE.colors) applyColors(SITE.colors);
+  applyColors(...pageColors());
   fillSiteContent();
   renderNav();
   renderSectionLinks();

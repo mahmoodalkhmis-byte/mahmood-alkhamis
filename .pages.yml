@@ -48,6 +48,40 @@ content:
           - name: intro
             label: النبذة تحت العنوان (اختياري)
             type: text
+          - name: colors
+            label: ألوان صفحة القسم (اختياري)
+            description: تنطبق على صفحة القسم وصفحات مشاريعه. اتركها على "نفس ألوان الموقع" إذا ما تبي تغيّر.
+            type: object
+            fields:
+              - name: theme
+                label: نمط الألوان
+                type: select
+                options:
+                  values:
+                    - name: inherit
+                      label: نفس ألوان الموقع
+                    - name: dark
+                      label: داكن (الأصلي)
+                    - name: light
+                      label: فاتح
+                    - name: sand
+                      label: رملي
+                    - name: navy
+                      label: كحلي
+                    - name: olive
+                      label: زيتوني
+              - name: bg
+                label: لون الخلفية (اختياري)
+                description: "كود اللون، مثال: #0e0f10"
+                type: string
+              - name: fg
+                label: لون النص (اختياري)
+                description: "مثال: #f1eee6"
+                type: string
+              - name: muted
+                label: لون النص الثانوي (اختياري)
+                description: "مثال: #9b988f"
+                type: string
           - name: projects
             label: مشاريع القسم
             type: object
@@ -91,6 +125,40 @@ content:
                 label: الوصف
                 description: كل سطر جديد = فقرة جديدة.
                 type: text
+              - name: colors
+                label: ألوان صفحة المشروع (اختياري)
+                description: اتركها على "نفس ألوان القسم" إذا ما تبي تغيّر.
+                type: object
+                fields:
+                  - name: theme
+                    label: نمط الألوان
+                    type: select
+                    options:
+                      values:
+                        - name: inherit
+                          label: نفس ألوان القسم
+                        - name: dark
+                          label: داكن (الأصلي)
+                        - name: light
+                          label: فاتح
+                        - name: sand
+                          label: رملي
+                        - name: navy
+                          label: كحلي
+                        - name: olive
+                          label: زيتوني
+                  - name: bg
+                    label: لون الخلفية (اختياري)
+                    description: "كود اللون، مثال: #0e0f10"
+                    type: string
+                  - name: fg
+                    label: لون النص (اختياري)
+                    description: "مثال: #f1eee6"
+                    type: string
+                  - name: muted
+                    label: لون النص الثانوي (اختياري)
+                    description: "مثال: #9b988f"
+                    type: string
               - name: photos
                 label: صور المشروع
                 description: تقدر ترفع أكثر من صورة مرة وحدة. أي قياس ينفع، والموقع يصغّر الكبيرة لحاله.
@@ -128,8 +196,8 @@ content:
               path: site/images
 
       - name: colors
-        label: الألوان
-        description: اختر نمط جاهز، أو اكتب ألوانك الخاصة تحت (الخانات الفاضية تاخذ لون النمط).
+        label: ألوان الموقع كله
+        description: الأساس لكل الصفحات. أي صفحة أو قسم أو مشروع تقدر تعطيه ألوان خاصة تغطي عليه.
         type: object
         fields:
           - name: theme
@@ -149,7 +217,7 @@ content:
                   label: زيتوني
           - name: bg
             label: لون الخلفية (اختياري)
-            description: "كود اللون، مثال: #0e0f10 — تلقى الأكواد إذا بحثت في Google عن color picker"
+            description: "كود اللون، مثال: #0e0f10"
             type: string
           - name: fg
             label: لون النص (اختياري)
@@ -157,7 +225,127 @@ content:
             type: string
           - name: muted
             label: لون النص الثانوي (اختياري)
-            description: "للأسطر الصغيرة والمعلومات الجانبية. مثال: #9b988f"
+            description: "مثال: #9b988f"
+            type: string
+
+      - name: pageColors
+        label: ألوان كل صفحة
+        description: كل صفحة تقدر تعطيها ألوان خاصة. ألوان الأقسام والمشاريع تلقاها داخل كل قسم ومشروع في "الأقسام والمشاريع".
+        type: object
+        fields:
+          - name: home
+            label: الصفحة الرئيسية
+            description: اتركها على "نفس ألوان الموقع" إذا ما تبي تغيّر.
+            type: object
+            fields:
+              - name: theme
+                label: نمط الألوان
+                type: select
+                options:
+                  values:
+                    - name: inherit
+                      label: نفس ألوان الموقع
+                    - name: dark
+                      label: داكن (الأصلي)
+                    - name: light
+                      label: فاتح
+                    - name: sand
+                      label: رملي
+                    - name: navy
+                      label: كحلي
+                    - name: olive
+                      label: زيتوني
+              - name: bg
+                label: لون الخلفية (اختياري)
+                description: "كود اللون، مثال: #0e0f10"
+                type: string
+              - name: fg
+                label: لون النص (اختياري)
+                description: "مثال: #f1eee6"
+                type: string
+              - name: muted
+                label: لون النص الثانوي (اختياري)
+                description: "مثال: #9b988f"
+                type: string
+          - name: about
+            label: صفحة نبذة عني
+            description: اتركها على "نفس ألوان الموقع" إذا ما تبي تغيّر.
+            type: object
+            fields:
+              - name: theme
+                label: نمط الألوان
+                type: select
+                options:
+                  values:
+                    - name: inherit
+                      label: نفس ألوان الموقع
+                    - name: dark
+                      label: داكن (الأصلي)
+                    - name: light
+                      label: فاتح
+                    - name: sand
+                      label: رملي
+                    - name: navy
+                      label: كحلي
+                    - name: olive
+                      label: زيتوني
+              - name: bg
+                label: لون الخلفية (اختياري)
+                description: "كود اللون، مثال: #0e0f10"
+                type: string
+              - name: fg
+                label: لون النص (اختياري)
+                description: "مثال: #f1eee6"
+                type: string
+              - name: muted
+                label: لون النص الثانوي (اختياري)
+                description: "مثال: #9b988f"
+                type: string
+          - name: contact
+            label: صفحة تواصل معي
+            description: اتركها على "نفس ألوان الموقع" إذا ما تبي تغيّر.
+            type: object
+            fields:
+              - name: theme
+                label: نمط الألوان
+                type: select
+                options:
+                  values:
+                    - name: inherit
+                      label: نفس ألوان الموقع
+                    - name: dark
+                      label: داكن (الأصلي)
+                    - name: light
+                      label: فاتح
+                    - name: sand
+                      label: رملي
+                    - name: navy
+                      label: كحلي
+                    - name: olive
+                      label: زيتوني
+              - name: bg
+                label: لون الخلفية (اختياري)
+                description: "كود اللون، مثال: #0e0f10"
+                type: string
+              - name: fg
+                label: لون النص (اختياري)
+                description: "مثال: #f1eee6"
+                type: string
+              - name: muted
+                label: لون النص الثانوي (اختياري)
+                description: "مثال: #9b988f"
+                type: string
+
+      - name: featured
+        label: المشاريع المختارة (في الرئيسية)
+        description: "تختار المشاريع اللي تطلع هنا من داخل كل مشروع: فعّل \"يظهر في الصفحة الرئيسية\"."
+        type: object
+        fields:
+          - name: label
+            label: العنوان الصغير (اختياري)
+            type: string
+          - name: title
+            label: العنوان
             type: string
 
       - name: about

@@ -37,5 +37,20 @@
     "phone": "+966 54 235 5887",
     "linkedin": "https://www.linkedin.com/in/mahmoodalkhamis",
     "location": "المنطقة الشرقية · السعودية"
+  },
+  "featured": {
+    "label": "SELECTED WORK",
+    "title": "مشاريع مختارة"
+  },
+  "pageColors": {
+    "home": {
+      "theme": "inherit"
+    },
+    "about": {
+      "theme": "inherit"
+    },
+    "contact": {
+      "theme": "inherit"
+    }
   }
 }
