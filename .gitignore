@@ -1,0 +1,6 @@
+# ملفات خاصة بجهازك، ما تنرفع على GitHub
+.claude/
+.netlify/
+Thumbs.db
+desktop.ini
+.DS_Store

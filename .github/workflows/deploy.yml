@@ -1,0 +1,45 @@
+# ==================================================================
+# نشر الموقع تلقائيًا على GitHub Pages
+# يشتغل لحاله كل ما ينحفظ تعديل (من لوحة التحكم أو من الكمبيوتر).
+# تشوف حالته في GitHub ← تبويب Actions.
+# ==================================================================
+name: نشر الموقع
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # زر "Run workflow" لو تبي تعيد النشر يدويًا
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# إذا انحفظ أكثر من تعديل ورا بعض، ينشر آخر واحد بس
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # يصغّر الصور الكبيرة (مثلًا لو رفعت صورة من الكاميرا مباشرة)
+      # التصغير للنسخة المنشورة بس — الأصل يبقى في GitHub زي ما هو
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - run: python .github/scripts/shrink_images.py site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
