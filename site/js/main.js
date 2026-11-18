@@ -46,7 +46,7 @@ const sectionInfo = (key) => {
 /* القسم المفتوح الحين: من صفحة القسم أو من المشروع المفتوح */
 function currentSection() {
   const page = $("section-page");
-  if (page) return page.dataset.category || new URLSearchParams(location.search).get("id");
+  if (page) return new URLSearchParams(location.search).get("id");
   if ($("project-page")) {
     const id = new URLSearchParams(location.search).get("id");
     return PROJECTS.find((p) => p.id === id)?.category;
@@ -248,7 +248,7 @@ function cardHTML(p, k = 0) {
 }
 
 /* صفحة القسم: العنوان والنبذة، وبعدها الأغلفة
-   القسم يتحدد من الرابط section.html?id=... (أو data-category في الصفحات القديمة) */
+   القسم يتحدد من الرابط section.html?id=... */
 function renderSectionPage(el) {
   const key = currentSection();
   if (!SECTIONS.some((s) => s.id === key)) {

@@ -155,22 +155,6 @@
           ]
         }
       ]
-    },
-    {
-      "title": "الفتى الوسيم",
-      "id": "The Handsome Boy",
-      "label": "اوسم ما انجبت العوامية",
-      "intro": "من اجمل ما انجب لنا الدهر",
-      "projects": [
-        {
-          "title": "The Handsome Boy",
-          "featured": false,
-          "cover": "images/projects/mwm6qa68-trx9uj4v.jpg",
-          "photos": [
-            "images/projects/mwm6ptxm-1ikbgyeu.jpeg"
-          ]
-        }
-      ]
     }
   ]
 }
