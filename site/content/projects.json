@@ -89,9 +89,7 @@
         {
           "title": "شمسو — الخباز",
           "id": "shamsu",
-          "subtitle": "",
           "location": "العوامية",
-          "year": "",
           "featured": true,
           "cover": "images/projects/shamsu/cover.jpg",
           "coverPosition": "92% 50%",
@@ -108,9 +106,7 @@
         {
           "title": "محيي — الخياط",
           "id": "muhyi",
-          "subtitle": "",
           "location": "العوامية",
-          "year": "",
           "featured": false,
           "cover": "images/projects/muhyi/cover.jpg",
           "coverPosition": "50% 50%",
@@ -127,9 +123,7 @@
         {
           "title": "أبو حسين — الميكانيكي",
           "id": "abu-hussain",
-          "subtitle": "",
           "location": "العوامية",
-          "year": "",
           "featured": false,
           "cover": "images/projects/abu-hussain/cover.jpg",
           "coverPosition": "40% 50%",
@@ -146,9 +140,7 @@
         {
           "title": "أبو مصطفى — الحداد",
           "id": "abu-mustafa",
-          "subtitle": "",
           "location": "العوامية",
-          "year": "",
           "featured": true,
           "cover": "images/projects/abu-mustafa/cover.jpg",
           "coverPosition": "50% 50%",
@@ -160,6 +152,22 @@
             "images/projects/abu-mustafa/04.jpg",
             "images/projects/abu-mustafa/05.jpg",
             "images/projects/abu-mustafa/06.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "الفتى الوسيم",
+      "id": "The Handsome Boy",
+      "label": "اوسم ما انجبت العوامية",
+      "intro": "من اجمل ما انجب لنا الدهر",
+      "projects": [
+        {
+          "title": "The Handsome Boy",
+          "featured": false,
+          "cover": "images/projects/mwm6qa68-trx9uj4v.jpg",
+          "photos": [
+            "images/projects/mwm6ptxm-1ikbgyeu.jpeg"
           ]
         }
       ]
